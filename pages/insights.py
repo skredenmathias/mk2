@@ -16,7 +16,7 @@ column1 = dbc.Col(
             """
         
             ## Insights
-            Prosjektet startet med SimpleLog.bak som ble lastet opp til en FTP server tilhørende Markedskraft. Med et Python SFTP library koblet jeg meg opp mot serveren og lastet ned SimpleLog filen. Dette var en ukjent filtype, og det var krevende å få lastet inn data med kjente teknikker. Hverken [nevn de jeg prøvde i en setning.] 
+            Prosjektet startet med SimpleLog.bak som ble lastet opp til en FTP server tilhørende Markedskraft. Med et Python SFTP library koblet jeg meg opp mot serveren og lastet ned SimpleLog filen. Dette var en ukjent filtype, og det var krevende å få lastet inn data med kjente teknikker. Hverken Microsoft Server Management Studio (SMSS), PostgreSQL, eller Python gjorde jobben.
 
             Jeg valgte å sende en mail til børre, da jeg ikke selv greide å finne problemet. I denne perioden hadde jeg enda ikke fått tilgang til dataen, så jeg begynte arbeidet med å sette opp en Plotly Dash nettside med CI via Travis CI og CD gjennom Heroku. Jeg satt også opp min egen database med et Docker mssql image. Etter kontakt med Birger, fant Børre og jeg en løsning med Microsoft SMSS. 
 
