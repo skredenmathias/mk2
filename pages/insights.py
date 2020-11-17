@@ -16,7 +16,7 @@ column1 = dbc.Col(
             """
         
             ## Insights
-            html.Img(src='assets/initial_df.png', className='img-fluid')
+            
 
             """
         ),
@@ -24,4 +24,4 @@ column1 = dbc.Col(
     ],
 )
 
-layout = dbc.Row([column1])
+layout = dbc.Row([column1, html.Img(src='assets/initial_df.png', className='img-fluid')])
