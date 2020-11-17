@@ -39,9 +39,12 @@ fig = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size
            hover_name="country", log_x=True, size_max=60)
 
 column2 = dbc.Col(
-    [
-        dcc.Graph(figure=fig),
+    [ 
+        html.Div(
+            html.Img(src='assets/wind_park_graph.png', className='img-fluid'),
+        )  
     ]
 )
 
-layout = dbc.Row([column1, html.Img(src='assets/wind_park_graph.png', className='img-fluid')])
+
+layout = dbc.Row([column1, column2])
