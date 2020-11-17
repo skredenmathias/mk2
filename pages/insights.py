@@ -67,7 +67,7 @@ row = html.Div(
         ),
         dbc.Row(
             [
-                dbc.Col(index_code_1),
+                dbc.Col(html.Div("One of three columns")),
                 dbc.Col(html.Div("One of three columns")),
                 dbc.Col(html.Div("One of three columns")),
             ],
@@ -113,8 +113,7 @@ wind_park_production = html.Img(src='assets/initial_df.png', className='img-flui
 wind_park_decision_tree_feature_importances2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 wind_park_anomalies2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 
-# layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc, clean_rocky_code, clean_rocky, column3])
-layout = dbc.Row([row])
+layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc, clean_rocky_code, clean_rocky, column3, row])
 
 # row = html.Div(
 #     [
