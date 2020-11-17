@@ -16,38 +16,41 @@ column1 = dbc.Col(
             """
         
             ## Insights
-            # Note that images are not responsive on IE 10.
-            Text describing project and initial data state
+            Prosjektet startet med SimpleLog.bak som ble lastet opp til en FTP server tilhørende Markedskraft. Med et Python SFTP library koblet jeg meg opp mot serveren og lastet ned SimpleLog filen. Dette var en ukjent filtype, og det var krevende å få lastet inn data med kjente teknikker. Hverken [nevn de jeg prøvde i en setning.] 
+
+            Jeg valgte å sende en mail til børre, da jeg ikke selv greide å finne problemet. I denne perioden hadde jeg enda ikke fått tilgang til dataen, så jeg begynte arbeidet med å sette opp en Plotly Dash nettside med CI via Travis CI og CD gjennom Heroku. Jeg satt også opp min egen database med et Docker mssql image. Etter kontakt med Birger, fant Børre og jeg en løsning med Microsoft SMSS. 
+
+            Dataen var da analysert med SQL queries i SMSS, Etter å ha kikket på dataene, virket det på meg som at dbo.LogLevel og dbo.Applications kun var inkludert fordi dbo.Log benyttet en kolonne fra hver. Jeg konsentrerte derfor videre fokus rundt dbo.Log. Dette både reduserte kompleksitet og tid det tok meg å vaske datasettet. Uten å gå glipp av potensielt viktige data. 
+
+            Dataen ble i Python omgjort til datetime format, sortert, og analysert i kronologisk rekkefølge. Jeg gikk nøye gjennom hver applikasjon, og gjorde notater for å kartlegge deres funksjonalitet, data, kvalitet og sammenheng med resterende programmer. 
+
+            Når denne listen var komplett, satt jeg igjen med en tilstrekkelig forståelse av datasettet jeg hadde levert. Jeg gjorde meg en rekke betraktninger rundt datasettet: 
+            PriceCalcWs står for 77% av alle log events, hvorav en tredjedel av disse er log events som returnerer NULL verdier.
+            Disse har en egen “characteristic”.
+            0.1% av datasettet var feilmeldinger av type 0/1. 
+            Alle utenom 4% av disse var i Transfer to Nimbus.
+            4% av disse var critical errors i TradeFetcher
+
+            Jeg valgte å videre analysere tre applikasjoner:
+            RockyII
+            Index_Mgmt
+            Wind_Power_Import
+            Da disse så ut til å holde mest relevant data. Disse applikasjonene hadde også mer variert data, som lett kunne benyttes uten mye skrubbing. 
+
+            Jeg skrev funksjoner for å sortere tekst dataen og formatere den i håndterlige tabeller. Analysen fokuserte hovedsakelig på data fra svenske vindparker (Wind_Power_Import). Jeg kjørte en anomaly modell og lagde en decision tree modell som predikerte strømproduksjon basert på temperatur, dato, og vindpark. Jeg fant blant annet ut at
+            Kulltorp returnerer kun NULL verdier.
+            Bleikevare produserer betydelig mye mer strøm enn de andre parkene.
+            Dagene lekker data inn i modellen.
+            Dette er fordi datasettet ble splittet slik at noen av de samme dagene ble inkludert i trenings og test settet.
+            Dermed har modellen lært seg en korrelasjon som gjør at den legger høyere vekt på visse dager hvor det var høy vindhastighet og produksjon. Denne korrelasjonen er ikke reell, da det er kunstig mange variabler som er berørt av denne “dobbel-lagringen”. 
+            Modellen kan for eksempel forbedres med å kjøre en random forest modell på mer data. Jeg tror modellen forbedres betraktelig med data fra flere vindparker, barometrisk trykk og forbruksdata ol. fra SE3, SE4 og potensielt andre relevante prisområder. 
 
 
-            """
-        ),
+            Jeg valgte å fokusere på en decision-tree regresjonsmodell. I en slik modell kan man enkelt se hvordan forskjellige valg ble tatt og hvilke features modellen la vekt på. Datasettet virket å være godt egnet for en slik modell, grunnet begrensede variabler og treningsdata som er en fordel i mer kompliserte modeller. Eksempelvis en deep learning LSTM modell. En RNN modell kan også passe, gitt tilstrekkelig data på flere variabler.I slike modeller kan data fra vær-sonar også være aktuelt. 
 
-    ],
-)
+            Jeg kjørte også en anomaly analyse på dataene i modellen. Denne analysen er imidlertid ikke tilstrekkelig. Analysen kan forbedres ved å kjøre lignende analyser på et lavere threshold, Trolig vil vi da se utslag fra modellen som går i tråd med forventninger om anomaliteter. Min modell har en altfor lav nøyaktighetsgrad. 
 
-column2 = dbc.Col(
-    [
-        dcc.Markdown(
-            """
-        
-            ## Currently: Explaining NULL values
-            should be after initial df
-            Talking about how PriceCalcWs either returns a NULL call with each log event, or no NULL values at all.
 
-            """
-        ),
-
-    ],
-)
-
-column3 = dbc.Col(
-    [
-        dcc.Markdown(
-            """
-        
-            ## Explaining how I cleaned the text fields into dataframes
-            Note: missing all analysis, which is in the notebook.
 
             """
         ),
