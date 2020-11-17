@@ -55,43 +55,6 @@ column3 = dbc.Col(
     ],
 )
 
-row = html.Div(
-    [
-        dbc.Row(
-            [
-                dbc.Col(html.Div("One of three columns")),
-                dbc.Col(html.Div("One of three columns")),
-                dbc.Col(html.Div("One of three columns")),
-            ],
-            align="start",
-        ),
-        dbc.Row(
-            [
-                dbc.Col(html.Div("One of three columns")),
-                dbc.Col(html.Div("One of three columns")),
-                dbc.Col(html.Div("One of three columns")),
-            ],
-            align="center",
-        ),
-        dbc.Row(
-            [
-                dbc.Col(html.Div("One of three columns")),
-                dbc.Col(html.Div("One of three columns")),
-                dbc.Col(html.Div("One of three columns")),
-            ],
-            align="end",
-        ),
-        dbc.Row(
-            [
-                dbc.Col(html.Div("One of three columns"), align="start"),
-                dbc.Col(html.Div("One of three columns"), align="center"),
-                dbc.Col(html.Div("One of three columns"), align="end"),
-            ]
-        ),
-    ]
-)
-
-
 
 initial_df = html.Img(src='assets/initial_df.png', className='img-fluid')
 
@@ -113,7 +76,7 @@ wind_park_production = html.Img(src='assets/initial_df.png', className='img-flui
 wind_park_decision_tree_feature_importances2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 wind_park_anomalies2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 
-layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc, clean_rocky_code, clean_rocky, column3, row])
+layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc, clean_rocky_code, clean_rocky, column3, ])
 
 # row = html.Div(
 #     [
