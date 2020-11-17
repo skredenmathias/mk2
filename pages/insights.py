@@ -47,7 +47,7 @@ column3 = dbc.Col(
             """
         
             ## Explaining how I cleaned the text fields into dataframes
-            # Note: missing all analysis, which is in the notebook.
+            Note: missing all analysis, which is in the notebook.
 
             """
         ),
@@ -67,16 +67,19 @@ index_code_1 = html.Img(src='assets/index_code_1.png', className='img-fluid')
 index_code_2 = html.Img(src='assets/index_code_2.png', className='img-fluid')
 index_clean = html.Img(src='assets/index_clean.png', className='img-fluid')
 
-wind_power_initial = html.Img(src='assets/initial_df.png', className='img-fluid')
-wind_park_clean = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_power_initial = html.Img(src='assets/wind_power_initial.png', className='img-fluid')
+wind_park_clean = html.Img(src='assets/wind_park_clean.png', className='img-fluid')
 
-kulltorp = html.Img(src='assets/initial_df.png', className='img-fluid')
+kulltorp = html.Img(src='assets/kulltorp.png', className='img-fluid')
 
-wind_park_production = html.Img(src='assets/initial_df.png', className='img-fluid')
-wind_park_decision_tree_feature_importances2 = html.Img(src='assets/initial_df.png', className='img-fluid')
-wind_park_anomalies2 = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_park_production = html.Img(src='assets/wind_park_production.png', className='img-fluid')
+wind_park_decision_tree_feature_importances2 = html.Img(src='assets/wind_park_decision_tree_feature_importances2.png', className='img-fluid')
+wind_park_anomalies2 = html.Img(src='assets/wind_park_anomalies2.png', className='img-fluid')
 
-layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc, clean_rocky_code, clean_rocky, column3, ])
+layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc, clean_rocky_code, clean_rocky, column3,
+                index_code_1, index_code_2, index_clean, wind_power_initial, wind_park_clean,
+                kulltorp, wind_park_production, wind_park_decision_tree_feature_importances2,
+                wind_park_anomalies2])
 
 # row = html.Div(
 #     [
