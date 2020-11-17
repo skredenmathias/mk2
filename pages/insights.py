@@ -24,4 +24,4 @@ column1 = dbc.Col(
     ],
 )
 
-layout = dbc.Row([column1, html.Img(src='assets/initial_df.png', className='img-fluid'])
+layout = dbc.Row([column1])
