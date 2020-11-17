@@ -24,18 +24,46 @@ column1 = dbc.Col(
     ],
 )
 
-row = html.Div(
+column2 = dbc.Col(
     [
-        dbc.Row(dbc.Col(html.Div("A single column"))),
-        dbc.Row(
-            [
-                dbc.Col(index_code_1),
-                dbc.Col(index_code_2),
-                dbc.Col(index_clean),
-            ]
+        dcc.Markdown(
+            """
+        
+            ## Insights
+            should be after initial df
+
+            """
         ),
-    ]
+
+    ],
 )
+
+# row = html.Div(
+#     [
+#         dbc.Row(dbc.Col(html.Div("A single column"))),
+#         dbc.Row(
+#             [
+#                 dbc.Col(index_code_1),
+#                 dbc.Col(index_code_2),
+#                 dbc.Col(index_clean),
+#             ]
+#         ),
+#     ]
+# )
+
+# row2 = html.Div(
+#     [
+#         dbc.Row(dbc.Col(html.Div("A single column"))),
+#         dbc.Row(
+#             [
+#                 dbc.Col(wind_park_production),
+#                 dbc.Col(wind_park_decision_tree_feature_importances2),
+#                 dbc.Col(wind_park_anomalies2),
+#             ]
+#         ),
+#     ]
+# )
+
 
 initial_df = html.Img(src='assets/initial_df.png', className='img-fluid')
 
@@ -57,4 +85,4 @@ wind_park_production = html.Img(src='assets/initial_df.png', className='img-flui
 wind_park_decision_tree_feature_importances2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 wind_park_anomalies2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 
-layout = dbc.Row([column1, initial_df, nulls_pricecalc, row])
+layout = dbc.Row([column1, initial_df, column2, nulls_pricecalc])
