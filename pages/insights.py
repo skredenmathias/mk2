@@ -16,7 +16,7 @@ column1 = dbc.Col(
             """
         
             ## Insights
-            
+            text text text
 
             """
         ),
@@ -25,5 +25,17 @@ column1 = dbc.Col(
 )
 
 initial_df = html.Img(src='assets/initial_df.png', className='img-fluid')
+nulls_pricecalc = html.Img(src='assets/nulls_pricecalc.png', className='img-fluid')
+clean_rocky_code = html.Img(src='assets/initial_df.png', className='img-fluid')
+clean_rocky = html.Img(src='assets/initial_df.png', className='img-fluid')
+index_code_1 = html.Img(src='assets/initial_df.png', className='img-fluid')
+index_code_2 = html.Img(src='assets/initial_df.png', className='img-fluid')
+index_clean = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_power_initial = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_park_clean = html.Img(src='assets/initial_df.png', className='img-fluid')
+kulltorp = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_park_production = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_park_decision_tree_feature_importances2 = html.Img(src='assets/initial_df.png', className='img-fluid')
+wind_park_anomalies2 = html.Img(src='assets/initial_df.png', className='img-fluid')
 
-layout = dbc.Row([column1, initial_df])
+layout = dbc.Row([column1, initial_df, nulls_pricecalc])
