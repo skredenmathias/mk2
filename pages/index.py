@@ -44,4 +44,4 @@ column2 = dbc.Col(
     ]
 )
 
-layout = dbc.Row([column1, column2])
+layout = dbc.Row([column1, html.Img(src='assets/wind_park_graph.png', className='img-fluid')])
