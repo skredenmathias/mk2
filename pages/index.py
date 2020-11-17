@@ -29,7 +29,7 @@ column1 = dbc.Col(
 
             """
         ),
-        dcc.Link(dbc.Button('Analysis Summary', color='primary'), href='/insights')
+        dcc.Link(dbc.Button('Oppsummering av analyse', color='primary'), href='/insights')
     ],
     md=4,
 )
@@ -41,7 +41,7 @@ fig = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size
 column2 = dbc.Col(
     [ 
         html.Div(
-            html.Img(src='assets/wind_park_graph.png', className='img-fluid'),
+            html.Img(src='assets/wind_park_graph.png', className='img-fluid', width="100%"),
         )  
     ]
 )
