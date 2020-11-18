@@ -48,13 +48,13 @@ header = dbc.Col(
     width=12,
 )
 
-# block4 = dbc.Col(
-#     [ 
-#         html.Div(
-#             initial_df   
-#         )  
-#     ]
-# )
+block4 = dbc.Col(
+    [ 
+        html.Div(
+            initial_df   
+        )  
+    ]
+)
 
 block5 = dbc.Col(
     [
