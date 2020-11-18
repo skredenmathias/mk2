@@ -10,6 +10,138 @@ from app import app
 
 # 1 column layout
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
+
+initial_df = html.Img(src='assets/initial_df.png', className='img-fluid')
+
+nulls_pricecalc = html.Img(src='assets/nulls_pricecalc.png', className='img-fluid')
+
+clean_rocky_code = html.Img(src='assets/clean_rocky_code.png', className='img-fluid')
+clean_rocky = html.Img(src='assets/clean_rocky.png', className='img-fluid')
+
+index_code_1 = html.Img(src='assets/index_code_1.png', className='img-fluid')
+index_code_2 = html.Img(src='assets/index_code_2.png', className='img-fluid')
+index_clean = html.Img(src='assets/index_clean.png', className='img-fluid')
+
+wind_power_initial = html.Img(src='assets/wind_power_initial.png', className='img-fluid')
+wind_park_clean = html.Img(src='assets/wind_park_clean.png', className='img-fluid')
+
+kulltorp = html.Img(src='assets/kulltorp.png', className='img-fluid')
+
+wind_park_production = html.Img(src='assets/wind_park_production.png', className='img-fluid')
+wind_park_decision_tree_feature_importances2 = html.Img(src='assets/wind_park_decision_tree_feature_importances2.png', className='img-fluid')
+wind_park_anomalies2 = html.Img(src='assets/wind_park_anomalies2.png', className='img-fluid')
+
+
+header = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            ## Insights  
+            Prosjektet startet med SimpleLog.bak som ble lastet opp til en FTP server tilhørende Markedskraft. Med et Python SFTP library koblet jeg meg opp mot serveren og lastet ned SimpleLog filen. Dette var en ukjent filtype, og det var krevende å få lastet inn data med kjente teknikker. Hverken Microsoft Server Management Studio (SMSS), PostgreSQL, eller Python gjorde jobben.
+
+            Jeg valgte å sende en mail til børre, da jeg ikke selv greide å finne problemet. I denne perioden hadde jeg enda ikke fått tilgang til dataen, så jeg begynte arbeidet med å sette opp en Plotly Dash nettside med CI via Travis CI og CD gjennom Heroku. Jeg satt også opp min egen database med et Docker mssql image. Etter kontakt med Birger, fant Børre og jeg en løsning med Microsoft SMSS. 
+
+            Dataen var da analysert med SQL queries i SMSS, Etter å ha kikket på dataene, virket det på meg som at dbo.LogLevel og dbo.Applications kun var inkludert fordi dbo.Log benyttet en kolonne fra hver. Jeg konsentrerte derfor videre fokus rundt dbo.Log. Dette både reduserte kompleksitet og tid det tok meg å vaske datasettet. Uten å gå glipp av potensielt viktige data. 
+            """
+        ),
+    ],
+    width=12,
+)
+
+block4 = dbc.Col(
+    [ 
+        html.Div(
+            initial_df   
+        )  
+    ]
+)
+
+block5 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            Dataen ble i Python omgjort til datetime format, sortert, og analysert i kronologisk rekkefølge. Jeg gikk nøye gjennom hver applikasjon, og gjorde notater for å kartlegge deres funksjonalitet, data, kvalitet og sammenheng med resterende programmer. 
+
+            Når denne listen var komplett, satt jeg igjen med en tilstrekkelig forståelse av datasettet jeg hadde levert. Jeg gjorde meg en rekke betraktninger rundt datasettet: 
+
+            """
+        ),
+    ],
+    md=4,
+)
+
+block6 = dbc.Col(
+    [
+        nulls_pricecalc     
+    ]
+)
+
+block7 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            Jeg valgte å videre analysere tre applikasjoner:
+            * RockyII
+            * Index_Mgmt
+            * Wind_Power_Import
+            Da disse så ut til å holde mest relevant data. Disse applikasjonene hadde også mer variert data, som lett kunne benyttes uten mye skrubbing.
+            
+            """
+        ),
+    ],
+    md=4,
+)
+
+block8 = dbc.Col(
+    [
+        html.Img(id='img4', src=url_img4, width="100%")      
+    ]
+)
+
+block9 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            #### Estimation Errors
+            If `Estimation Errors = Estimated Hours - Actual Hours`, from the distribution 
+            we could see:   
+            1. Errors are approximately within range (-2500, 700) hours;  
+            2. Most estimation errors are within a few hours, but two long tails indicate that some error numbers are huge;  
+            3. People tend to under estimate effort for complex tasks.   
+            """
+        ),
+    ],
+    md=4,
+)
+
+block10 = dbc.Col(
+    [
+        html.Img(id='img3', src=url_img3, width="100%")      
+    ]
+)
+
+blankrow = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            &nbsp;
+            """
+        ),
+    ],
+    md=4,
+)
+layout = dbc.Col([
+    dbc.Row(header),
+    dbc.Row(blankrow),
+    dbc.Row([block4]),
+    dbc.Row(blankrow),
+    dbc.Row([block5, block6]),
+    dbc.Row(blankrow),
+    # dbc.Row([block7, block8]),
+    # dbc.Row(blankrow),
+    # dbc.Row([block9, block10]),
+])
+
 column1 = dbc.Col(
     [
         dcc.Markdown(
@@ -58,51 +190,4 @@ column1 = dbc.Col(
     ],
 )
 
-
-initial_df = html.Img(src='assets/initial_df.png', className='img-fluid')
-
-nulls_pricecalc = html.Img(src='assets/nulls_pricecalc.png', className='img-fluid')
-
-clean_rocky_code = html.Img(src='assets/clean_rocky_code.png', className='img-fluid')
-clean_rocky = html.Img(src='assets/clean_rocky.png', className='img-fluid')
-
-index_code_1 = html.Img(src='assets/index_code_1.png', className='img-fluid')
-index_code_2 = html.Img(src='assets/index_code_2.png', className='img-fluid')
-index_clean = html.Img(src='assets/index_clean.png', className='img-fluid')
-
-wind_power_initial = html.Img(src='assets/wind_power_initial.png', className='img-fluid')
-wind_park_clean = html.Img(src='assets/wind_park_clean.png', className='img-fluid')
-
-kulltorp = html.Img(src='assets/kulltorp.png', className='img-fluid')
-
-wind_park_production = html.Img(src='assets/wind_park_production.png', className='img-fluid')
-wind_park_decision_tree_feature_importances2 = html.Img(src='assets/wind_park_decision_tree_feature_importances2.png', className='img-fluid')
-wind_park_anomalies2 = html.Img(src='assets/wind_park_anomalies2.png', className='img-fluid')
-
 layout = dbc.Row([column1])
-
-# row = html.Div(
-#     [
-#         dbc.Row(dbc.Col(html.Div("A single column"))),
-#         dbc.Row(
-#             [
-#                 dbc.Col(index_code_1),
-#                 dbc.Col(index_code_2),
-#                 dbc.Col(index_clean),
-#             ]
-#         ),
-#     ]
-# )
-
-# row2 = html.Div(
-#     [
-#         dbc.Row(dbc.Col(html.Div("A single column"))),
-#         dbc.Row(
-#             [
-#                 dbc.Col(wind_park_production),
-#                 dbc.Col(wind_park_decision_tree_feature_importances2),
-#                 dbc.Col(wind_park_anomalies2),
-#             ]
-#         ),
-#     ]
-# )
