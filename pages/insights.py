@@ -63,6 +63,11 @@ block5 = dbc.Col(
             Dataen ble i Python omgjort til datetime format, sortert, og analysert i kronologisk rekkefølge. Jeg gikk nøye gjennom hver applikasjon, og gjorde notater for å kartlegge deres funksjonalitet, data, kvalitet og sammenheng med resterende programmer. 
 
             Når denne listen var komplett, satt jeg igjen med en tilstrekkelig forståelse av datasettet jeg hadde levert. Jeg gjorde meg en rekke betraktninger rundt datasettet: 
+            * PriceCalcWs står for 77% av alle log events, hvorav en tredjedel av disse er log events som returnerer NULL verdier.
+                * Disse har en egen “characteristic”.
+            * 0.1% av datasettet var feilmeldinger av type 0/1. 
+            * Alle utenom 4% av disse var i Transfer to Nimbus.
+                * 4% av disse var critical errors i TradeFetcher
 
             """
         ),
@@ -70,13 +75,13 @@ block5 = dbc.Col(
     md=4,
 )
 
-# block6 = dbc.Col(
-#     [ 
-#         html.Div(
-#             nulls_pricecalc   
-#         )  
-#     ]
-# )
+block6 = dbc.Col(
+    [ 
+        html.Div(
+            nulls_pricecalc   
+        )  
+    ]
+)
 
 block7 = dbc.Col(
     [
@@ -94,35 +99,83 @@ block7 = dbc.Col(
     md=4,
 )
 
-# block8 = dbc.Col(
-#     [
-#         html.Img(id='img4', src=url_img4, width="100%")      
-#     ]
-# )
+block8 = dbc.Col(
+    [ 
+        html.Div(
+            clean_rocky_code   
+        )  
+    ]
+)
 
 block9 = dbc.Col(
+    [ 
+        html.Div(
+            clean_rocky   
+        )  
+    ]
+)
+
+block10 = dbc.Col(
     [
         dcc.Markdown(
             """
-            Jeg skrev funksjoner for å sortere tekst-dataen og formatere den i håndterlige tabeller. Analysen fokuserte hovedsakelig på data fra svenske vindparker (Wind_Power_Import). Jeg kjørte en anomaly modell og lagde en decision tree modell som predikerte strømproduksjon basert på temperatur, dato, og vindpark. Jeg fant blant annet ut at
-            Kulltorp returnerer kun NULL verdier.
-            Bleikevare produserer betydelig mye mer strøm enn de andre parkene.
-            Dagene lekker data inn i modellen.
-            Dette er fordi datasettet ble splittet slik at noen av de samme dagene ble inkludert i trenings og test settet.
-            Dermed har modellen lært seg en korrelasjon som gjør at den legger høyere vekt på visse dager hvor det var høy vindhastighet og produksjon. Denne korrelasjonen er ikke reell, da det er kunstig mange variabler som er berørt av denne “dobbel-lagringen”. 
-            Modellen kan for eksempel forbedres med å kjøre en random forest modell på mer data. Jeg tror modellen forbedres betraktelig med data fra flere vindparker, barometrisk trykk og forbruksdata ol. fra SE3, SE4 og potensielt andre relevante prisområder.
+            Jeg skrev funksjoner for å sortere tekst-dataen og formatere den i håndterlige tabeller. Analysen fokuserte hovedsakelig på data fra svenske vindparker (Wind_Power_Import). Jeg kjørte en anomaly modell og lagde en decision tree modell som predikerte strømproduksjon basert på temperatur, dato, og vindpark. Jeg fant blant annet ut at:
+            * Kulltorp returnerer kun NULL verdier.
+            """
+        ),
+    ],
+    md=8,
+)
+
+block11 = dbc.Col(
+    [ 
+        html.Div(
+            kulltorp   
+        )  
+    ]
+)
+
+block12 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            * Bleikevare produserer betydelig mye mer strøm enn de andre parkene.
+            """
+        ),
+    ],
+    md=8,
+)
+
+block13 = dbc.Col(
+    [ 
+        html.Div(
+            wind_park_production   
+        )  
+    ]
+)
+
+block14 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            * Dagene lekker data inn i modellen.
+                * Dette er fordi datasettet ble splittet slik at noen av de samme dagene ble inkludert i trenings og test settet.
+                * Dermed har modellen lært seg en korrelasjon som gjør at den legger høyere vekt på visse dager hvor det var høy vindhastighet og produksjon. Denne korrelasjonen er ikke reell, da det er kunstig mange variabler som er berørt av denne “dobbel-lagringen”. 
+            * Modellen kan for eksempel forbedres med å kjøre en random forest modell på mer data. Jeg tror modellen forbedres betraktelig med data fra flere vindparker, barometrisk trykk og forbruksdata ol. fra SE3, SE4 og potensielt andre relevante prisområder.
 
             """
         ),
     ],
-    md=4,
+    md=8,
 )
 
-# block10 = dbc.Col(
-#     [
-#         html.Img(id='img3', src=url_img3, width="100%")      
-#     ]
-# )
+block15 = dbc.Col(
+    [ 
+        html.Div(
+            wind_park_decision_tree_feature_importances2   
+        )  
+    ]
+)
 
 blankrow = dbc.Col(
     [
@@ -134,16 +187,22 @@ blankrow = dbc.Col(
     ],
     md=4,
 )
-# layout = dbc.Col([
-#     dbc.Row(header),
-#     dbc.Row([block4])
-#     dbc.Row(blankrow),
-#     dbc.Row([block5]),
-#     dbc.Row(blankrow),
-#     dbc.Row([block7]),
-#     dbc.Row(blankrow),
-#     dbc.Row([block9]),
-# ])
+layout = dbc.Col([
+    dbc.Row(header),
+    dbc.Row([block4]),
+    dbc.Row(blankrow),
+    dbc.Row([block5, block6]),
+    dbc.Row(blankrow),
+    dbc.Row([block7]),
+    dbc.Row([block8, block9]),
+    dbc.Row(blankrow),
+    dbc.Row([block10]),
+    dbc.Row([block11]),
+    dbc.Row([block12]),
+    dbc.Row([block13]),
+    dbc.Row([block14]),
+    dbc.Row([block15]),
+])
 
 column1 = dbc.Col(
     [
@@ -193,4 +252,4 @@ column1 = dbc.Col(
     ],
 )
 
-layout = dbc.Row([column1])
+# layout = dbc.Row([column1])
