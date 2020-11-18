@@ -236,6 +236,18 @@ block21 = dbc.Col(
     ]
 )
 
+block22 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            Colab notebook kan finnes her: https://colab.research.google.com/drive/1BOojefUzJpFNgttm3UcFETTuuvSZfGXi?usp=sharing
+
+            """
+        ),
+    ],
+    md=10,
+)
+
 blankrow = dbc.Col(
     [
         dcc.Markdown(
@@ -269,6 +281,8 @@ layout = dbc.Col([
     dbc.Row([block19]),
     dbc.Row([block20]),
     dbc.Row([block21]),
+    dbc.Row([block22]),
+    dbc.Row(blankrow),
 
 ])
 
