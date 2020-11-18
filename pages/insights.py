@@ -134,15 +134,16 @@ blankrow = dbc.Col(
     ],
     md=4,
 )
-layout = dbc.Col([
-    dbc.Row(header),
-    dbc.Row(blankrow),
-    dbc.Row([block5]),
-    dbc.Row(blankrow),
-    dbc.Row([block7]),
-    dbc.Row(blankrow),
-    dbc.Row([block9]),
-])
+# layout = dbc.Col([
+#     dbc.Row(header),
+#     dbc.Row([block4])
+#     dbc.Row(blankrow),
+#     dbc.Row([block5]),
+#     dbc.Row(blankrow),
+#     dbc.Row([block7]),
+#     dbc.Row(blankrow),
+#     dbc.Row([block9]),
+# ])
 
 column1 = dbc.Col(
     [
