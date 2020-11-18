@@ -71,8 +71,10 @@ block5 = dbc.Col(
 )
 
 block6 = dbc.Col(
-    [
-        nulls_pricecalc     
+    [ 
+        html.Div(
+            nulls_pricecalc   
+        )  
     ]
 )
 
@@ -102,12 +104,14 @@ block9 = dbc.Col(
     [
         dcc.Markdown(
             """
-            #### Estimation Errors
-            If `Estimation Errors = Estimated Hours - Actual Hours`, from the distribution 
-            we could see:   
-            1. Errors are approximately within range (-2500, 700) hours;  
-            2. Most estimation errors are within a few hours, but two long tails indicate that some error numbers are huge;  
-            3. People tend to under estimate effort for complex tasks.   
+            Jeg skrev funksjoner for å sortere tekst-dataen og formatere den i håndterlige tabeller. Analysen fokuserte hovedsakelig på data fra svenske vindparker (Wind_Power_Import). Jeg kjørte en anomaly modell og lagde en decision tree modell som predikerte strømproduksjon basert på temperatur, dato, og vindpark. Jeg fant blant annet ut at
+            Kulltorp returnerer kun NULL verdier.
+            Bleikevare produserer betydelig mye mer strøm enn de andre parkene.
+            Dagene lekker data inn i modellen.
+            Dette er fordi datasettet ble splittet slik at noen av de samme dagene ble inkludert i trenings og test settet.
+            Dermed har modellen lært seg en korrelasjon som gjør at den legger høyere vekt på visse dager hvor det var høy vindhastighet og produksjon. Denne korrelasjonen er ikke reell, da det er kunstig mange variabler som er berørt av denne “dobbel-lagringen”. 
+            Modellen kan for eksempel forbedres med å kjøre en random forest modell på mer data. Jeg tror modellen forbedres betraktelig med data fra flere vindparker, barometrisk trykk og forbruksdata ol. fra SE3, SE4 og potensielt andre relevante prisområder.
+
             """
         ),
     ],
