@@ -137,13 +137,11 @@ blankrow = dbc.Col(
 layout = dbc.Col([
     dbc.Row(header),
     dbc.Row(blankrow),
-    dbc.Row([block4]),
+    dbc.Row([block5]),
     dbc.Row(blankrow),
-    dbc.Row([block5, block6]),
+    dbc.Row([block7]),
     dbc.Row(blankrow),
-    # dbc.Row([block7, block8]),
-    # dbc.Row(blankrow),
-    # dbc.Row([block9, block10]),
+    dbc.Row([block9]),
 ])
 
 column1 = dbc.Col(
