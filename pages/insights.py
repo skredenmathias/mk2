@@ -66,7 +66,7 @@ block5 = dbc.Col(
             * PriceCalcWs står for 77% av alle log events, hvorav en tredjedel av disse er log events som returnerer NULL verdier.
                 * Disse har en egen “characteristic”.
             * 0.1% av datasettet var feilmeldinger av type 0/1. 
-            * Alle utenom 4% av disse var i Transfer to Nimbus.
+            * Alle utenom 4% var i Transfer to Nimbus.
                 * 4% av disse var critical errors i TradeFetcher
 
             """
@@ -88,15 +88,16 @@ block7 = dbc.Col(
         dcc.Markdown(
             """
             Jeg valgte å videre analysere tre applikasjoner:
-            RockyII
-            Index_Mgmt
-            Wind_Power_Import
+            * RockyII
+            * Index_Mgmt
+            * Wind_Power_Import
+
             Da disse så ut til å holde mest relevant data. Disse applikasjonene hadde også mer variert data, som lett kunne benyttes uten mye skrubbing.
             
             """
         ),
     ],
-    md=4,
+    md=12,
 )
 
 block8 = dbc.Col(
@@ -160,9 +161,6 @@ block14 = dbc.Col(
             """
             * Dagene lekker data inn i modellen.
                 * Dette er fordi datasettet ble splittet slik at noen av de samme dagene ble inkludert i trenings og test settet.
-                * Dermed har modellen lært seg en korrelasjon som gjør at den legger høyere vekt på visse dager hvor det var høy vindhastighet og produksjon. Denne korrelasjonen er ikke reell, da det er kunstig mange variabler som er berørt av denne “dobbel-lagringen”. 
-            * Modellen kan for eksempel forbedres med å kjøre en random forest modell på mer data. Jeg tror modellen forbedres betraktelig med data fra flere vindparker, barometrisk trykk og forbruksdata ol. fra SE3, SE4 og potensielt andre relevante prisområder.
-
             """
         ),
     ],
@@ -172,7 +170,68 @@ block14 = dbc.Col(
 block15 = dbc.Col(
     [ 
         html.Div(
+            wind_park_clean   
+        )  
+    ]
+)
+
+block16 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            * Dermed har modellen lært seg en korrelasjon som gjør at den legger høyere vekt på visse dager hvor det var høy vindhastighet og produksjon. Denne korrelasjonen er ikke reell, da det er kunstig mange variabler som er berørt av denne “dobbel-lagringen”. 
+            """
+        ),
+    ],
+    md=8,
+)
+
+block17 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            * Modellen kan for eksempel forbedres med å kjøre en random forest modell på mer data. Jeg tror modellen forbedres betraktelig med data fra flere vindparker, barometrisk trykk og forbruksdata ol. fra SE3, SE4 og potensielt andre relevante prisområder.
+                * Jeg hadde også tanker om å kombinere den med RockyII og Index_Mgmt, men det var problemer med å merge på trade_ID.
+            """
+        ),
+    ],
+    md=8,
+)
+
+block18 = dbc.Col(
+    [ 
+        html.Div(
             wind_park_decision_tree_feature_importances2   
+        )  
+    ]
+)
+
+block19 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            Jeg valgte å fokusere på en decision-tree regresjonsmodell. I en slik modell kan man enkelt se hvordan forskjellige valg ble tatt og hvilke features modellen la vekt på. Datasettet virket å være godt egnet for en slik modell, grunnet begrensede variabler og treningsdata som er en fordel i mer kompliserte modeller. Eksempelvis en deep learning LSTM modell. En RNN modell kan også passe, gitt tilstrekkelig data på flere variabler.I slike modeller kan data fra vær-sonar også være aktuelt. 
+            """
+        ),
+    ],
+    md=8,
+)
+
+block20 = dbc.Col(
+    [
+        dcc.Markdown(
+            """
+            Jeg kjørte også en anomaly analyse på dataene i modellen. Denne analysen er imidlertid ikke tilstrekkelig. Analysen kan forbedres ved å kjøre lignende analyser på et lavere threshold, Trolig vil vi da se utslag fra modellen som går i tråd med forventninger om anomaliteter. Min modell har en altfor lav nøyaktighetsgrad. 
+            """
+        ),
+    ],
+    md=10,
+)
+
+block21 = dbc.Col(
+    [ 
+        html.Div(
+            wind_park_anomalies2   
         )  
     ]
 )
@@ -202,6 +261,15 @@ layout = dbc.Col([
     dbc.Row([block13]),
     dbc.Row([block14]),
     dbc.Row([block15]),
+    dbc.Row(blankrow),
+    dbc.Row([block16]),
+    dbc.Row(blankrow),
+    dbc.Row([block17]),
+    dbc.Row([block18]),
+    dbc.Row([block19]),
+    dbc.Row([block20]),
+    dbc.Row([block21]),
+
 ])
 
 column1 = dbc.Col(
